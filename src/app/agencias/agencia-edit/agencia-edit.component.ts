@@ -41,38 +41,36 @@ export class AgenciaEditComponent implements OnInit {
     }
   }
 
-  saveAgencia(): void {if (true === true) {
-    if (this.agencia.id === 0) {
-      this.productService
-        .createAgencia(this.agencia)
-        .subscribe(
+  saveAgencia(): void {
+    if (true === true) {
+      if (this.agencia.id === 0) {
+        this.productService.createAgencia(this.agencia).subscribe(
           () =>
             this.onSaveComplete(
               `La nueva agencia ${this.agencia.agencia} fue registrada.`
             ),
           (error: any) => (this.errorMessage = <any>error)
         );
-    } else {
-      this.productService
-        .updateAgencia(this.agencia)
-        .subscribe(
+      } else {
+        this.productService.updateAgencia(this.agencia).subscribe(
           () =>
             this.onSaveComplete(
               `La agencia ${this.agencia.agencia} fue actualizada`
             ),
           (error: any) => (this.errorMessage = <any>error)
         );
+      }
+    } else {
+      this.errorMessage = "Please correct the validation errors.";
     }
-  } else {
-    this.errorMessage = 'Please correct the validation errors.';
-  }}
+  }
 
   onSaveComplete(message?: string): void {
     // if (message) {
     //   this.messageService.addMessage(message);
     // }
 
-    this.router.navigate(["/agencias"]);
+    this.router.navigate(["/agencias"], { queryParamsHandling: "preserve" });
   }
 
   deleteAgencia(): void {

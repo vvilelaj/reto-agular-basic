@@ -14,3 +14,8 @@ export interface AgenciaResolved {
   agencia: Agencia;
   error?: any;
 }
+
+export interface AgenciasResolved {
+  agencia: Agencia[];
+  error?: any;
+}

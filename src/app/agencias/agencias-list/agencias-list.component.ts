@@ -35,6 +35,7 @@ export class AgenciasListComponent implements OnInit {
 
   ngOnInit() {
     this.listFilter = this.route.snapshot.queryParamMap.get("filterby") || "";
+    this.showImage = this.route.snapshot.queryParamMap.get("showImage").toString().toLowerCase() === "true" || false;
 
     this.agenciasService.getAgencias().subscribe(
       products => {
