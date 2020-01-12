@@ -7,6 +7,7 @@ export interface Agencia {
   direccion: string;
   lat: number;
   lon: number;
+  imageUrl: string;
 }
 
 export interface AgenciaResolved {

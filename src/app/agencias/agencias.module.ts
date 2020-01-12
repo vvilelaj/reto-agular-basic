@@ -3,6 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 
 import { AgenciasListComponent } from "./agencias-list/agencias-list.component";
 import { SharedModule } from "../shared/shared.module";
+import { ImagenAleatoriaPipe } from "./agencias-list/imagen-aleatoria.pipe";
 
 const routes: Routes = [
   {
@@ -17,7 +18,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AgenciasListComponent],
-  imports: [SharedModule, RouterModule.forChild(routes)]
+  declarations: [AgenciasListComponent, ImagenAleatoriaPipe],
+  imports: [SharedModule, RouterModule.forChild(routes)],
+  //exports: [ImagenAleatoriaPipe]
 })
 export class AgenciasModule {}

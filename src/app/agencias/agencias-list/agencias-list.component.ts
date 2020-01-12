@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { AgenciaService } from '../agencias.service';
 import { Agencia } from '../agencia';
+import { ImagenAleatoriaPipe } from './imagen-aleatoria.pipe';
 
 @Component({
   selector: "app-agencias-list",
@@ -10,7 +11,7 @@ import { Agencia } from '../agencia';
 })
 export class AgenciasListComponent implements OnInit {
   pageTitle = "Agencias";
-  imageWidth = 50;
+  imageWidth = 100;
   imageMargin = 2;
   showImage = false;
   errorMessage = '';

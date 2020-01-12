@@ -21,7 +21,7 @@
         <thead>
           <tr>
             <th>
-              <button class="btn btn-outline-primary btn-sm">
+              <button class="btn btn-outline-primary btn-sm" (click)="toggleImage()">
                 {{showImage ? "Hide" : "Show"}} Image
               </button>
             </th>
@@ -37,11 +37,8 @@
         <tbody>
           <tr *ngFor="let agencia of filteredAgencias">
             <td>
-              <img *ngIf="showImage && agencia"
-                   [src]="agencia"
-                   [title]="agencia.agencia"
-                   [style.width.px]="imageWidth"
-                   [style.margin.px]="imageMargin">
+              <img *ngIf="showImage" [src]="agencia.imageUrl | imagenAleatoria" [title]="agencia.agencia"
+                [style.width.px]="imageWidth" [style.margin.px]="imageMargin">
             </td>
             <td>
               <a [routerLink]="['/agencias',agencia.id]" [queryParams]="{filterby : listFilter, showImage : showImage}">

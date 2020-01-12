@@ -93,7 +93,8 @@ export class AgenciaService {
       departamento: null,
       direccion: null,
       lat: 0,
-      lon: 0
+      lon: 0,
+      imageUrl: null
     };
   }
 }
