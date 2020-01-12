@@ -52,7 +52,7 @@
             <td>{{ agencia.lat }}</td>
             <td>{{ agencia.lon }}</td>
             <td>
-              <button [routerLink]="['/agenciass',agencia.id,'edit']"
+              <button [routerLink]="['/agencias',agencia.id]"
                 [queryParams]="{filterby : listFilter, showImage : showImage}" class="btn btn-outline-primary btn-sm">
                 Edit
               </button>
@@ -61,4 +61,8 @@
         </tbody>
       </table>
     </div>
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    Error: {{ errorMessage }}
   </div>

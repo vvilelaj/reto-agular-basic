@@ -1,0 +1,93 @@
+<div class="card" *ngIf="agencia">
+  <div class="card-header">
+    {{ pageTitle }}
+  </div>
+
+  <div class="card-body">
+    <form novalidate #agenciaForm="ngForm">
+      <fieldset>
+        <legend>Informacion de Agencia</legend>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label" for="agencia">Nombre</label>
+          <div class="col-md-8">
+            <input class="form-control" id="agencia" type="text" placeholder="Nombre (requerido)" required minlength="3"
+              [(ngModel)]=agencia.agencia name="agencia" #agenciaVar="ngModel" [ngClass]="{'is-invalid': (agenciaVar.touched ||
+              agenciaVar.dirty ||
+              agencia.id !== 0) &&
+              !agenciaVar.valid }" />
+
+            <span class="invalid-feedback">
+              <span *ngIf="agenciaVar.errors?.required">
+                Nombre es requerido.
+              </span>
+              <span *ngIf="agenciaVar.errors?.minlength">
+                Nombre debe tener al menos 03 caracteres.
+              </span>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label" for="distrito">Distrito</label>
+          <div class="col-md-8">
+            <input class="form-control" id="distrito" type="text" placeholder="Distrito" [(ngModel)]=agencia.distrito
+              name="distrito" />
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label" for="provincia">Provincia</label>
+          <div class="col-md-8">
+            <input class="form-control" id="provincia" type="text" placeholder="Provincia" [(ngModel)]=agencia.provincia
+              name="provincia" />
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label" for="departamento">Departamento</label>
+          <div class="col-md-8">
+            <input class="form-control" id="departamento" type="text" placeholder="Departamento"
+              [(ngModel)]=agencia.departamento name="departamento" />
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label" for="direccion">Direccion</label>
+          <div class="col-md-8">
+            <input class="form-control" id="direccion" type="text" placeholder="Direccion" [(ngModel)]=agencia.direccion
+              name="direccion" />
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label" for="Latitud">Latitud</label>
+          <div class="col-md-8">
+            <input class="form-control" id="latitud" type="number" placeholder="Latitud" [(ngModel)]=agencia.lat
+              name="Latitud" />
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label" for="Longitud">Longitud</label>
+          <div class="col-md-8">
+            <input class="form-control" id="Longitud" type="number" placeholder="Longitud" [(ngModel)]=agencia.lon
+              name="Longitud" />
+          </div>
+        </div>
+
+      </fieldset>
+    </form>
+  </div>
+
+  <div class="card-footer">
+    <button class="btn btn-primary mr-3" type="button" title="Guardar" (click)="saveAgencia()">Guardar</button>
+    <button class="btn btn-outline-secondary mr-3" type="button" title="Cancelar"
+      [routerLink]="['/agencias']">Cancelar</button>
+    <button class="btn btn-outline-warning   mr-3" type="button" title="Eliminar"
+      (click)="deleteAgencia()">Eliminar</button>
+  </div>
+</div>
+
+<div class="alert alert-danger" *ngIf="errorMessage">{{errorMessage}}
+</div>
