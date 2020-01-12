@@ -1,0 +1,67 @@
+<div class="card">
+  <div class="card-header">
+    {{pageTitle}}
+  </div>
+
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-2">Filtrar por:</div>
+      <div class="col-md-4">
+        <input type="text" [(ngModel)]="listFilter" />
+      </div>
+    </div>
+    <div class="row" *ngIf="listFilter">
+      <div class="col-md-6">
+        <h4>Filtered by: {{listFilter}}</h4>
+      </div>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table mb-0" *ngIf="agencias && agencias.length">
+        <thead>
+          <tr>
+            <th>
+              <button class="btn btn-outline-primary btn-sm">
+                {{showImage ? "Hide" : "Show"}} Image
+              </button>
+            </th>
+            <th>Agencia</th>
+            <th>Distrito</th>
+            <th>Provincia</th>
+            <th>Departamento</th>
+            <th>Direcci&oacute;n</th>
+            <th>Latitud</th>
+            <th>Longitud</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let agencia of filteredAgencias">
+            <td>
+              <img *ngIf="showImage && agencia"
+                   [src]="agencia"
+                   [title]="agencia.agencia"
+                   [style.width.px]="imageWidth"
+                   [style.margin.px]="imageMargin">
+            </td>
+            <td>
+              <a [routerLink]="['/agencias',agencia.id]" [queryParams]="{filterby : listFilter, showImage : showImage}">
+                {{ agencia.agencia }}
+              </a>
+            </td>
+            <td>{{ agencia.distrito }}</td>
+            <td>{{ agencia.provincia }}</td>
+            <td>{{ agencia.departamento }}</td>
+            <td>{{ agencia.direccion }}</td>
+            <td>{{ agencia.lat }}</td>
+            <td>{{ agencia.lon }}</td>
+            <td>
+              <button [routerLink]="['/agenciass',agencia.id,'edit']"
+                [queryParams]="{filterby : listFilter, showImage : showImage}" class="btn btn-outline-primary btn-sm">
+                Edit
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
