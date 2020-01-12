@@ -81,10 +81,11 @@
   </div>
 
   <div class="card-footer">
-    <button class="btn btn-primary mr-3" type="button" title="Guardar" (click)="saveAgencia()">Guardar</button>
+    <button class="btn btn-primary mr-3" type="button" title="Guardar" (click)="saveAgencia()"
+      [disabled]="!agenciaForm.valid">Guardar</button>
     <button class="btn btn-outline-secondary mr-3" type="button" title="Cancelar"
       [routerLink]="['/agencias']">Cancelar</button>
-    <button class="btn btn-outline-warning   mr-3" type="button" title="Eliminar"
+    <button class="btn btn-outline-warning   mr-3" type="button" title="Eliminar" *ngIf="!agencia"
       (click)="deleteAgencia()">Eliminar</button>
   </div>
 </div>
